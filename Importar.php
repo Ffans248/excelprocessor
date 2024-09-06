@@ -1,16 +1,18 @@
 <form action="#" method="POST" enctype="multipart/form-data">
     <input type="file" name="archivo" required>
-    <input type="submit" value="Subir Archivo">
+    <input type="file" name="archivo2" required>
+    <input type="submit" value="Subir Archivos">
 </form>
+
 <?php
 require 'vendor/autoload.php';
 require 'conexion.php'; // Asegúrate de que este archivo define y establece la conexión a la base de datos
-require 'conexion.php'; // Asegúrate de que este archivo define y establece la conexión a la base de datos
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+$NregistrosC=0;
+$NregistrosV=0;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica si se ha subido un archivo
+    // Verifica si se ha subido el archivo de Compras
     if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
         $nombreArchivo = $_FILES['archivo']['name'];  // Nombre del archivo
         $rutaTemporal = $_FILES['archivo']['tmp_name']; // Ruta temporal del archivo en el servidor
@@ -20,20 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hoja = $documento->getSheet(0); // Obtiene la primera hoja del documento
 
         // Obtener el número de filas con datos
-        $numerofilas = $hoja->getHighestDataRow();
-        $letra = $hoja->getHighestColumn();
+        $numeroFilas = $hoja->getHighestDataRow();
 
-
-        // Inicializar campoident fuera del ciclo
-        $campoident = 1;
-
-        // Ciclo while que controla la columna a procesar
-        
-            // Procesar las filas para la columna actual
-            for ($ifilas = 2; $ifilas <= $numerofilas; $ifilas++) {
-                // Definir el nombre del campo y la letra de la columna en base a $campoident
-                $cabecera = '';
-                $Col1 = $hoja->getCell('A' . $ifilas)->getValue();
+        // Procesar las filas para la columna actual
+        for ($ifilas = 2; $ifilas <= $numeroFilas; $ifilas++) {
+            $Col1 = $hoja->getCell('A' . $ifilas)->getValue();
             $Col2 = $hoja->getCell('B' . $ifilas)->getValue();
             $Col3 = $hoja->getCell('C' . $ifilas)->getValue();
             $Col4 = $hoja->getCell('D' . $ifilas)->getValue();
@@ -45,84 +38,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Col10 = $hoja->getCell('J' . $ifilas)->getCalculatedValue();
             $Col11 = $hoja->getCell('K' . $ifilas)->getCalculatedValue();
 
-
-                // Llamar a la función insertFe con la columna y el campo correspondiente
-                insertFe(
-                    $ifilas,
-                    $Col1,
-                    $Col2,
-                    $Col3,
-                    $Col4,
-                    $Col5,
-                    $Col6,
-                    $Col7,
-                    $Col8,
-                    $Col9,
-                    $Col10,
-                    $Col11
-                );
-            }
-
-            // Incrementar campoident para la siguiente columna y reiniciar el ciclo for
-            
+            insertCompras($mysqli, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11);
+            $NregistrosC++;
         }
+    }
 
-        $mysqli->close(); // Cerrar la conexión a la base de datos
+    // Verifica si se ha subido el archivo de Ventas
+    if (isset($_FILES['archivo2']) && $_FILES['archivo2']['error'] === UPLOAD_ERR_OK) {
+        $nombreArchivo2 = $_FILES['archivo2']['name'];
+        $rutaTemporal2 = $_FILES['archivo2']['tmp_name'];
 
+        // Cargar el documento de Excel
+        $documento2 = IOFactory::load($rutaTemporal2);
+        $hoja2 = $documento2->getSheet(0);
+
+        // Obtener el número de filas con datos
+        $numeroFilas2 = $hoja2->getHighestDataRow();
+
+        for ($ifilas2 = 2; $ifilas2 <= $numeroFilas2; $ifilas2++) {
+            $Colm1 = $hoja2->getCell('A' . $ifilas2)->getValue();
+            $Colm2 = $hoja2->getCell('B' . $ifilas2)->getValue();
+            $Colm3 = $hoja2->getCell('C' . $ifilas2)->getValue();
+            $Colm4 = $hoja2->getCell('D' . $ifilas2)->getValue();
+            $Colm5 = $hoja2->getCell('E' . $ifilas2)->getValue();
+            $Colm6 = $hoja2->getCell('F' . $ifilas2)->getValue();
+            $Colm7 = $hoja2->getCell('G' . $ifilas2)->getCalculatedValue();
+            $Colm8 = $hoja2->getCell('H' . $ifilas2)->getCalculatedValue();
+
+            insertVentas($mysqli, $Colm1, $Colm2, $Colm3, $Colm4, $Colm5, $Colm6, $Colm7, $Colm8);
+            $NregistrosV++;
+        }
+    }
+
+    $mysqli->close();
+    echo "Archivos procesados correctamente.<br>";
+    echo"Compras: '$NregistrosC'<br>";
+    echo"Ventas: '$NregistrosV'<br>";
+
+} else {
+    echo "Hubo un problema al subir los archivos.";
+}
+
+function insertCompras($mysqli, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11) {
+    $sql = "INSERT INTO compras (fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, moneda, monto_grantotal, monto_sinIVA, monto_IVA) 
+            VALUES ('$Col1', '$Col2', '$Col3', '$Col4', '$Col5', '$Col6', '$Col7', '$Col8', '$Col9', '$Col10', '$Col11')";
+    if ($mysqli->query($sql)) {
+        echo "Registro de compra insertado correctamente.<br>";
     } else {
-        echo "Hubo un problema al subir el archivo.";
+        echo "Error al insertar compra: " . $mysqli->error;
     }
+}
 
-
-function insertFe(
-
-
-    $ifilas,
-    $Col1,
-    $Col2,
-    $Col3,
-    $Col4,
-    $Col5,
-    $Col6,
-    $Col7,
-    $Col8,
-    $Col9,
-    $Col10,
-    $Col11
-) {
-    global $hoja;
-
-    // Obtener el valor de la celda en la columna especificada
-
-
-
-    // Asegúrate de que tu variable de conexión está definida y abierta
-    $mysqli = new mysqli('localhost', 'root', '', 'Excelprocessor');
-
-    if ($mysqli->connect_error) {
-        die("Conexión fallida: " . $mysqli->connect_error);
-    }
-
-    // Escapar el valor para evitar inyecciones SQL
-
-    $Col1 = $mysqli->real_escape_string($Col1);
-    $Col2 = $mysqli->real_escape_string($Col2);
-    $Col3 = $mysqli->real_escape_string($Col3);
-    $Col4 = $mysqli->real_escape_string($Col4);
-    $Col5 = $mysqli->real_escape_string($Col5);
-    $Col6 = $mysqli->real_escape_string($Col6);
-    $Col7 = $mysqli->real_escape_string($Col7);
-    $Col8 = $mysqli->real_escape_string($Col8);
-    $Col9 = $mysqli->real_escape_string($Col9);
-    $Col10 = $mysqli->real_escape_string($Col10);
-    $Col11 = $mysqli->real_escape_string($Col11);
-    // Insertar datos en la base de datos
-    $sql = "INSERT INTO compras (fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, moneda, monto_grantotal, monto_sinIVA, monto_IVA) VALUES ('$Col1', '$Col2', '$Col3', '$Col4', '$Col5','$Col6', '$Col7', '$Col8', '$Col9', '$Col10', '$Col11')";
-    if ($mysqli->query($sql) === TRUE) {
-        echo "Nuevo registro creado exitosamente<br>";
+function insertVentas($mysqli, $Colm1, $Colm2, $Colm3, $Colm4, $Colm5, $Colm6, $Colm7, $Colm8) {
+    $sql = "INSERT INTO ventas (fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA) 
+            VALUES ('$Colm1', '$Colm2', '$Colm3', '$Colm4', '$Colm5', '$Colm6', '$Colm7', '$Colm8')";
+    if ($mysqli->query($sql)) {
+        echo "Registro de venta insertado correctamente.<br>";
     } else {
-        echo "Error: " . $sql . "<br>" . $mysqli->error;
+        echo "Error al insertar venta: " . $mysqli->error;
     }
-
-    $mysqli->close(); // Cerrar la conexión para cada inserción
 }
