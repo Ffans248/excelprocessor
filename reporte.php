@@ -16,7 +16,6 @@ $hojaActiva = $excel->getActiveSheet();
 $hojaActiva->setTitle('LibroComprasYVentas');
 
 
-$hojaActiva->getDefaultColumnDimension()->setWidth(10.78);
 
 //ENCABEZADO PRIMARIO
 $hojaActiva->getColumnDimension('B')->setWidth(43.12);
@@ -95,18 +94,18 @@ $hojaActiva->getStyle('E5:E6')->getFont()->setSize(9);
 $hojaActiva->getStyle('E5')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->setCellValue('E5', 'NIT');
 
-$hojaActiva->getColumnDimension('F')->setWidth(18.78);
+$hojaActiva->getColumnDimension('F')->setWidth(46.22);
 $hojaActiva->mergeCells('F5:F6');
 $hojaActiva->getStyle('F5')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->setCellValue('F5', 'PROVEEDOR');
 
-$hojaActiva->getColumnDimension('G')->setWidth(10.78);
+$hojaActiva->getColumnDimension('G')->setWidth(11.22);
 $hojaActiva->mergeCells('G5:G6');
 $hojaActiva->getStyle('G5')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->getStyle('G5:G6')->getFont()->setSize(9);
 $hojaActiva->setCellValue('G5', 'TOTAL');
 
-$hojaActiva->getColumnDimension('H')->setWidth(10.78);
+$hojaActiva->getColumnDimension('H')->setWidth(11.22);
 $hojaActiva->getStyle('H5')->getAlignment()->setWrapText(true);
 $hojaActiva->mergeCells('H5:H6');
 $hojaActiva->getStyle('H5:H6')->getFont();
@@ -116,20 +115,19 @@ $hojaActiva->setCellValue('H5', 'COMPRA DE PEQ.CONTRIBUYENTE');
 
 $hojaActiva->getStyle('I5:K6')->getFont()->setSize(9);
 
-$hojaActiva->getColumnDimension('I')->setWidth(21.56);
+
 $hojaActiva->mergeCells('I5:J5');
 $hojaActiva->setCellValue('I5', 'PRECIO NETO');
 
-$hojaActiva->getColumnDimension('I')->setWidth(10.78);
+$hojaActiva->getColumnDimension('I')->setWidth(11.22);
 $hojaActiva->setCellValue('I6', 'SERVICIOS');
 
-$hojaActiva->getColumnDimension('J')->setWidth(10.78);
+$hojaActiva->getColumnDimension('J')->setWidth(11.22);
 $hojaActiva->setCellValue('J6', 'BIENES');
 
-$hojaActiva->getColumnDimension('K')->setWidth(10.78);
+$hojaActiva->getColumnDimension('K')->setWidth(11.22);
 $hojaActiva->setCellValue('K5', 'IVA');
 
-$hojaActiva->getColumnDimension('K')->setWidth(10.78);
 $hojaActiva->setCellValue('K6', 'CREDITO');
 //FIN ENCABEZADO SECUNDARIO
 
@@ -170,7 +168,7 @@ $hojaActiva->getStyle('H' . $fila)->getNumberFormat()->setFormatCode($accounting
 $hojaActiva->getStyle('I' . $fila)->getNumberFormat()->setFormatCode($accountingFormat);
 $hojaActiva->getStyle('J' . $fila)->getNumberFormat()->setFormatCode($accountingFormat);
 $hojaActiva->getStyle('K' . $fila)->getNumberFormat()->setFormatCode($accountingFormat);
-$hojaActiva->getColumnDimension('F')->setWidth(18.78);
+$hojaActiva->getColumnDimension('F')->setWidth(46.22);
 $hojaActiva->setCellValue('F' . $fila, 'TOTALES');
 $hojaActiva->setCellValueExplicit('G' . $fila, '=SUMA(G' . ($fila - 1) . ':G7)', DataType::TYPE_FORMULA);
 $hojaActiva->setCellValue('H' . $fila, '=+SUMA(H' . $fila-1 . ': H7)');
@@ -263,18 +261,16 @@ $hojaActiva->getStyle('E' . $fila+4 . ':E' . $fila+5)->getFont()->setSize(9);
 $hojaActiva->getStyle('E' . $fila+4)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->setCellValue('E' . $fila+4, 'NIT');
 
-$hojaActiva->getColumnDimension('F')->setWidth(18.78);
+$hojaActiva->getColumnDimension('F')->setWidth(46.22);
 $hojaActiva->mergeCells('F' . $fila+4 . ':G' . $fila+5);
 $hojaActiva->getStyle('F' . $fila+4)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->setCellValue('F' . $fila+4, 'COMPRADOR');
 
-$hojaActiva->getColumnDimension('H')->setWidth(10.78);
 $hojaActiva->mergeCells('H' . $fila+4 . ':H' . $fila+5);
 $hojaActiva->getStyle('H' . $fila+4)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $hojaActiva->getStyle('H' . $fila+4 . ':H' . $fila+5)->getFont()->setSize(9);
 $hojaActiva->setCellValue('H' . $fila+4, 'BIENES');
 
-$hojaActiva->getColumnDimension('I')->setWidth(10.78);
 $hojaActiva->getStyle('I' . $fila+4)->getAlignment()->setWrapText(true);
 $hojaActiva->mergeCells('I' . $fila+4 . ':I' . $fila+5);
 $hojaActiva->getStyle('I' . $fila+4 . ':I' . $fila+5)->getFont();
@@ -285,21 +281,19 @@ $hojaActiva->setCellValue('I' . $fila+4, 'SERVICIOS');
 $hojaActiva->getStyle('A' . $fila+4 . ':K' . $fila+5)->getFont()->setSize(8);
 
 
-$hojaActiva->getColumnDimension('J')->setWidth(10.78);
 $hojaActiva->mergeCells('J' . $fila+4 . ':J' . $fila+5);
 $hojaActiva->setCellValue('J' . $fila+4, 'EXPORTACIÓN');
 
-$hojaActiva->getColumnDimension('K')->setWidth(10.78);
 $hojaActiva->setCellValue('K' . $fila+4, 'DEBITO');
 
-$hojaActiva->getColumnDimension('K')->setWidth(10.78);
 $hojaActiva->setCellValue('K' . $fila+5, 'IVA');
 
 //FIN ENCABEZADO SECUNDARIO
 
 $fila = $fila + 6;
-
+$fila2 = $fila;
 while ($rows2 = $resultado2->fetch_assoc()) {
+
     $hojaActiva->setCellValue('A' . $fila, $rows2['fecha_emision']);
     $hojaActiva->setCellValue('C' . $fila, $rows2['serie']);
     $hojaActiva->setCellValue('D' . $fila, $rows2['numero_DTE']);
@@ -327,7 +321,9 @@ while ($rows2 = $resultado2->fetch_assoc()) {
 
     $fila++;
 
+    
 }
+
 
 
 $hojaActiva->getStyle('H' . $fila)->getNumberFormat()->setFormatCode($accountingFormat);
@@ -336,10 +332,10 @@ $hojaActiva->getStyle('J' . $fila)->getNumberFormat()->setFormatCode($accounting
 $hojaActiva->getStyle('K' . $fila)->getNumberFormat()->setFormatCode($accountingFormat);
 $hojaActiva->mergeCells('F' . $fila . ':G' . $fila);
 $hojaActiva->setCellValue('F' . $fila, 'SUMAS');
-$hojaActiva->setCellValue('H' . $fila, '=+SUMA(H' . $fila-1 . ': H7)');
-$hojaActiva->setCellValue('I' . $fila, '=+SUMA(I' . $fila-1 . ': I7)');
-$hojaActiva->setCellValue('J' . $fila, '=+SUMA(J' . $fila-1 . ': J7)');
-$hojaActiva->setCellValue('K' . $fila, '=+SUMA(K' . $fila-1 . ': K7)');
+$hojaActiva->setCellValue('H' . $fila, '=+SUMA(H' . $fila-1 . ': H' . $fila2 . ')');
+$hojaActiva->setCellValue('I' . $fila, '=+SUMA(I' . $fila-1 . ': I' . $fila2 . ')');
+$hojaActiva->setCellValue('J' . $fila, '=+SUMA(J' . $fila-1 . ': J' . $fila2 . ')');
+$hojaActiva->setCellValue('K' . $fila, '=+SUMA(K' . $fila-1 . ': K' . $fila2 . ')');
 $hojaActiva->getStyle('A' . $fila . ':K' . $fila)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
 
