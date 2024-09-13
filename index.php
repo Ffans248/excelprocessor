@@ -33,7 +33,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index.html" class="brand-link">
+      <a href="index.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">EXCELPROCESSOR</span>
@@ -53,7 +53,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="index.html" class="nav-link active">
+                  <a href="index.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tablas</p>
                   </a>
@@ -77,7 +77,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="descargarArchivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descargar Archivos</p>
                   </a>
@@ -97,12 +97,6 @@ $resultado2 = mysqli_query($mysqli, $sql2);
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1>Tablas</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Tablas</li>
-              </ol>
             </div>
           </div>
         </div>

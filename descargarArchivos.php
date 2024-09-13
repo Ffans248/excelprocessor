@@ -92,29 +92,30 @@
                         <div class="col-sm-6">
                             <h1>Descargas</h1>
                         </div>
-                    
+                        
                     </div>
                 </div>
             </section>
 
             <!-- Main content -->
             <section class="content mb-12">
-                <form action="Importar.php" method="POST" enctype="multipart/form-data">
+                <form id="dateForm" action="descargarRegistros.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir primero el de Compras y luego el de Ventas</label>
+                        <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final</label>
                         <div class="mb-6 row">
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile1" name="archivo">
+                                <input class="form-control" type="date" id="formFile1" name="fecha" required>
                             </div>
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile2" name="archivo2">
+                                <input class="form-control" type="date" id="formFile2" name="fecha2" required>
                             </div>
                         </div>
                         <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
+                            <input class="form-control" type="submit" value="Descargar Conforme a Fechas">
                         </div>
                     </div>
                 </form>
+                
             </section>
 
         </div>
@@ -147,6 +148,11 @@
 
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+
+    <!-- JavaScript para formato de fecha -->
+    
+
+
 </body>
 
 </html>
