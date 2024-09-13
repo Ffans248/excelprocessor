@@ -98,24 +98,28 @@
             </section>
 
             <!-- Main content -->
-            <section class="content mb-12">
+            <section class="content mb-4">
                 <form action="Importar.php" method="POST" enctype="multipart/form-data">
-                    <div class="mb-12">
+                    <div class="mb-3">
                         <label for="formFile" class="form-label">Subir primero el de Compras y luego el de Ventas</label>
-                        <div class="mb-6 row">
+                        <div class="row mb-3">
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile1" name="archivo">
+                                <label class="btn btn-outline-info btn-block" for="formFile1">Subir Archivo de compras</label>
+                                <input class="form-control-file d-none" type="file" id="formFile1" name="archivo" required>
                             </div>
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile2" name="archivo2">
+                                <label class="btn btn-outline-info btn-block" for="formFile2">Subir Archivos de ventas</label>
+                                <input class="form-control-file d-none" type="file" id="formFile2" name="archivo2" required>
                             </div>
                         </div>
-                        <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
-                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-primary">Subir Archivos</button>
                     </div>
                 </form>
             </section>
+            
+
 
         </div>
         <!-- /.content-wrapper -->
