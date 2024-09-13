@@ -1,3 +1,7 @@
+<?php
+require 'conexion.php';
+$sql = "SELECT * FROM compras";
+$resultado = mysqli_query($mysqli, $sql); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +21,8 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Option 1: Include in HTML -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -33,51 +39,51 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Tablas
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tablas</p>
-                            </a>
-                        </li>
-                    </ul>
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Tablas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tablas</p>
+                  </a>
                 </li>
+              </ul>
+            </li>
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Archivos
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="archivos.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Subir Archivos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="archivos.html" class="nav-link active">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Descargar Archivos</p>
-                          </a>
-                        </li>
-                    </ul>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Archivos
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="archivos.html" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Subir Archivos</p>
+                  </a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                  <a href="archivos.html" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Descargar Archivos</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </nav>
-    </div>
+      </div>
       <!-- /.sidebar -->
     </aside>
 
@@ -157,44 +163,66 @@
                   <h3 class="card-title">DataTable with export options</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example2" class="table table-bordered table-striped">
+                <div class="card-body mb-6">
+                  <table id="example2" class="table table-bordered table-sm table-striped">
                     <thead>
                       <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>ID</th>
+                        <th>Fecha de Emisión</th>
+                        <th>Tipo de DTE</th>
+                        <th>Serie</th>
+                        <th>Número de DTE</th>
+                        <th>NIT emisor</th>
+                        <th>Nombre completo del emisor</th>
+                        <th>Código de Establecimiento</th>
+                        <th>Monto Gran Total</th>
+                        <th>Monto sin IVA</th>
+                        <th>Monto IVA</th>
+                        <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td>4</td>
-                        <td>X</td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 5.0</td>
-                        <td>Win 95+</td>
-                        <td>5</td>
-                        <td>C</td>
-                      </tr>
+                      <?php
+
+
+
+                      if ($resultado) {
+                        while ($row = $resultado->fetch_array()) {
+                          echo "<tr>";
+                          echo "<td>" . $row['id'] . "</td>";
+                          echo "<td>" . $row['fecha_emision'] . "</td>";
+                          echo "<td>" . $row['tipo_DTE'] . "</td>";
+                          echo "<td>" . $row['serie'] . "</td>";
+                          echo "<td>" . $row['numero_DTE'] . "</td>";
+                          echo "<td>" . $row['NIT_emisor'] . "</td>";
+                          echo "<td>" . $row['nombre_completo_emisor'] . "</td>";
+                          echo "<td>" . $row['codigo_establecimiento'] . "</td>";
+                          echo "<td>" . $row['monto_grantotal'] . "</td>";
+                          echo "<td>" . $row['monto_sinIVA'] . "</td>";
+                          echo "<td>" . $row['monto_IVA'] . "</td>";
+                          ?>
+                          <td> <a
+                              href="actualizar.php?id=<?php echo urlencode($row['id']); ?>&fecha_emision=<?php echo urlencode($row['fecha_emision']); ?>&stipo_DTE=<?php echo urlencode($row['tipo_DTE']); ?>&serie=<?php echo urlencode($row['serie']); ?>&numero_DTE=<?php echo urlencode($row['numero_DTE']); ?>&NIT_emisor=<?php echo urlencode($row['NIT_emisor']); ?>&nombre_completo_emisor=<?php echo urlencode($row['nombre_completo_emisor']); ?>&codigo_establecimiento=<?php echo urlencode($row['codigo_establecimiento']); ?>&monto_grantotal=<?php echo urlencode($row['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row['monto_IVA']); ?>">
+                              <i class="bi bi-pencil"></i>
+                            </a>
+
+
+                          </td>
+                          <?php
+                          echo "</tr>";
+                          //include("aqdmindelete.php");
+                        }
+                      }
+
+
+                      ?>
+                      
                       <!-- Add more rows as needed -->
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                      </tr>
+                      
                     </tfoot>
-                    </tbody>
+                    
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -245,9 +273,12 @@
   </script>
 
   <script>
-    $(function () {
-      $("#example2").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
+    $(document).ready(function () {
+      // Inicializa DataTables después de que los datos estén en la tabla
+      $('#example2').DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
