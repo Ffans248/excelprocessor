@@ -1,9 +1,3 @@
-<form action="#" method="POST" enctype="multipart/form-data">
-    <input type="file" name="archivo" required>
-    <input type="file" name="archivo2" required>
-    <input type="submit" value="Subir Archivos">
-</form>
-
 <?php
 require 'vendor/autoload.php';
 require 'conexion.php'; // Asegúrate de que este archivo define y establece la conexión a la base de datos
@@ -71,9 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $mysqli->close();
-    echo "Archivos procesados correctamente.<br>";
-    echo"Compras: '$NregistrosC'<br>";
-    echo"Ventas: '$NregistrosV'<br>";
+    header('Location: reporte.php');
 
 } else {
     echo "Hubo un problema al subir los archivos.";
@@ -83,7 +75,7 @@ function insertCompras($mysqli, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7,
     $sql = "INSERT INTO compras (fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, moneda, monto_grantotal, monto_sinIVA, monto_IVA) 
             VALUES ('$Col1', '$Col2', '$Col3', '$Col4', '$Col5', '$Col6', '$Col7', '$Col8', '$Col9', '$Col10', '$Col11')";
     if ($mysqli->query($sql)) {
-        echo "Registro de compra insertado correctamente.<br>";
+        
     } else {
         echo "Error al insertar compra: " . $mysqli->error;
     }
@@ -93,7 +85,7 @@ function insertVentas($mysqli, $Colm1, $Colm2, $Colm3, $Colm4, $Colm5, $Colm6, $
     $sql = "INSERT INTO ventas (fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA) 
             VALUES ('$Colm1', '$Colm2', '$Colm3', '$Colm4', '$Colm5', '$Colm6', '$Colm7', '$Colm8')";
     if ($mysqli->query($sql)) {
-        echo "Registro de venta insertado correctamente.<br>";
+        
     } else {
         echo "Error al insertar venta: " . $mysqli->error;
     }

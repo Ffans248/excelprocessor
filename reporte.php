@@ -343,12 +343,16 @@ header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetm
 header('Content-Disposition: attachment;filename="LibroComprasYVentas.xlsx"');
 header('Cache-Control: max-age=0');
 
+$archivoPath = 'LibroComprasYVentas.xlsx';
+
 $writer = IOFactory::createWriter($excel, 'Xlsx');
-$writer->save('php://output');
+$writer->save($archivoPath);
+
+// Redirige a un script que hará la descarga
+header('Location: redirigir.php?file=' . urlencode($archivoPath));
+
 exit;
 
-function formato(){
 
-}
 
 
