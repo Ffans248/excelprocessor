@@ -98,13 +98,14 @@
             </section>
 
             <!-- Main content -->
-            <section class="content mb-12">
+            <section class="content mb-4">
                 <form action="Importar.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
                         <label for="formFile" class="form-label">Subir Archivos de Compras y Ventas Juntos (Subir primero el de Ventas y luego el de Compras) </label>
                         <div class="mb-6 row">
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile1" name="archivo">
+                                <label class="btn btn-outline-info btn-block" for="formFile1">Subir Archivo de compras</label>
+                                <input class="form-control-file d-none" type="file" id="formFile1" name="archivo" required>
                             </div>
                             <div class="col">
                                 <input class="form-control" type="file" id="formFile2" name="archivo2">

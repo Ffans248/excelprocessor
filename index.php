@@ -1,7 +1,10 @@
 <?php
 require 'conexion.php';
 $sql = "SELECT * FROM compras";
-$resultado = mysqli_query($mysqli, $sql); ?>
+$resultado = mysqli_query($mysqli, $sql);
+$sql2 = "SELECT * FROM ventas ";
+$resultado2 = mysqli_query($mysqli, $sql2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,40 +116,62 @@ $resultado = mysqli_query($mysqli, $sql); ?>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                      <th>ID</th>
+                        <th>Fecha de Emisión</th>
+
+                        <th>Serie</th>
+                        <th>Número de DTE</th>
+                        <th>ID de Receptor</th>
+                        <th>Nombre completo del receptor</th> 
+                        <th>Monto Gran Total</th>
+                        <th>Monto sin IVA</th>
+                        <th>Monto IVA</th>
+                        <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Absolute</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td>4</td>
-                        <td>X</td>
-                      </tr>
-                      <tr>
-                        <td>ZETA</td>
-                        <td>Internet Explorer 5.0</td>
-                        <td>Win 95+</td>
-                        <td>5</td>
-                        <td>C</td>
-                      </tr>
+
+                      <?php
+
+
+
+                      if ($resultado2) {
+                        while ($row2 = $resultado2->fetch_array()) {
+                          echo "<tr>";
+                          echo "<td>" . $row2['id'] . "</td>";
+                          echo "<td>" . $row2['fecha_emision'] . "</td>";
+                          echo "<td>" . $row2['serie'] . "</td>";
+                          echo "<td>" . $row2['numero_DTE'] . "</td>";
+                          echo "<td>" . $row2['id_receptor'] . "</td>";
+                          echo "<td>" . $row2['nombre_completo_receptor'] . "</td>";
+                          echo "<td>" . $row2['monto_grantotal'] . "</td>";
+                          echo "<td>" . $row2['monto_sinIVA'] . "</td>";
+                          echo "<td>" . $row2['monto_IVA'] . "</td>";
+
+                          ?>
+                          <td> <a
+                              href="actualizar.php?id=<?php echo urlencode($row2['id']); ?>&fecha_emision=<?php echo urlencode($row2['fecha_emision']); ?>&serie=<?php echo urlencode($row2['serie']); ?>&numero_DTE=<?php echo urlencode($row2['numero_DTE']); ?>&id_receptor=<?php echo urlencode($row2['id_receptor']); ?>&nombre_completo_receptor=<?php echo urlencode($row2['nombre_completo_receptor']); ?>&monto_grantotal=<?php echo urlencode($row2['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row2['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row2['monto_IVA']); ?>">
+                              <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="deleteV.php?id=<?php echo $row2['id']; ?>"><i class="bi bi-trash"></i></button></a>
+
+
+                          </td>
+                          <?php
+                          echo "</tr>";
+                          //include("aqdmindelete.php");
+                        }
+                      }
+
+
+                      ?>
+
                       <!-- Add more rows as needed -->
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                      </tr>
+                      
                     </tfoot>
-                    </tbody>
+
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -154,7 +179,7 @@ $resultado = mysqli_query($mysqli, $sql); ?>
               <!-- /.card -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">DataTable with export options</h3>
+                  <h3 class="card-title">Libro de compras</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body mb-6">
@@ -169,6 +194,7 @@ $resultado = mysqli_query($mysqli, $sql); ?>
                         <th>NIT emisor</th>
                         <th>Nombre completo del emisor</th>
                         <th>Código de Establecimiento</th>
+                        <th>Moneda</th>
                         <th>Monto Gran Total</th>
                         <th>Monto sin IVA</th>
                         <th>Monto IVA</th>
@@ -191,14 +217,16 @@ $resultado = mysqli_query($mysqli, $sql); ?>
                           echo "<td>" . $row['NIT_emisor'] . "</td>";
                           echo "<td>" . $row['nombre_completo_emisor'] . "</td>";
                           echo "<td>" . $row['codigo_establecimiento'] . "</td>";
+                          echo "<td>" . $row['moneda'] . "</td>";
                           echo "<td>" . $row['monto_grantotal'] . "</td>";
                           echo "<td>" . $row['monto_sinIVA'] . "</td>";
                           echo "<td>" . $row['monto_IVA'] . "</td>";
                           ?>
                           <td> <a
-                              href="actualizar.php?id=<?php echo urlencode($row['id']); ?>&fecha_emision=<?php echo urlencode($row['fecha_emision']); ?>&stipo_DTE=<?php echo urlencode($row['tipo_DTE']); ?>&serie=<?php echo urlencode($row['serie']); ?>&numero_DTE=<?php echo urlencode($row['numero_DTE']); ?>&NIT_emisor=<?php echo urlencode($row['NIT_emisor']); ?>&nombre_completo_emisor=<?php echo urlencode($row['nombre_completo_emisor']); ?>&codigo_establecimiento=<?php echo urlencode($row['codigo_establecimiento']); ?>&monto_grantotal=<?php echo urlencode($row['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row['monto_IVA']); ?>">
+                              href="actualizar.php?id=<?php echo urlencode($row['id']); ?>&fecha_emision=<?php echo urlencode($row['fecha_emision']); ?>&tipo_DTE=<?php echo urlencode($row['tipo_DTE']); ?>&serie=<?php echo urlencode($row['serie']); ?>&numero_DTE=<?php echo urlencode($row['numero_DTE']); ?>&NIT_emisor=<?php echo urlencode($row['NIT_emisor']); ?>&nombre_completo_emisor=<?php echo urlencode($row['nombre_completo_emisor']); ?>&codigo_establecimiento=<?php echo urlencode($row['codigo_establecimiento']); ?>&moneda=<?php echo urlencode($row['moneda']); ?>&monto_grantotal=<?php echo urlencode($row['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row['monto_IVA']); ?>">
                               <i class="bi bi-pencil"></i>
                             </a>
+                            <a href="deleteC.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash"></i></button></a>
 
 
                           </td>
@@ -210,13 +238,13 @@ $resultado = mysqli_query($mysqli, $sql); ?>
 
 
                       ?>
-                      
+
                       <!-- Add more rows as needed -->
                     </tbody>
                     <tfoot>
-                      
+
                     </tfoot>
-                    
+
                   </table>
                 </div>
                 <!-- /.card-body -->
