@@ -90,7 +90,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Descargas</h1>
+                            <h1>Subir Archivos</h1>
                         </div>
                         
                     </div>
@@ -101,7 +101,7 @@
             <section class="content mb-12">
                 <form id="dateForm" action="descargarRegistros.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
-                        <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final</label>
+                        <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Compras y Ventas Juntos)</label>
                         <div class="mb-6 row">
                             <div class="col">
                                 <input class="form-control" type="date" id="formFile1" name="fecha" required>
@@ -111,11 +111,44 @@
                             </div>
                         </div>
                         <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Descargar Conforme a Fechas">
+                            <input class="form-control" type="submit" value="Descargar Libro de Compras y Ventas">
                         </div>
                     </div>
                 </form>
-                
+                <br><br>
+                <form id="dateForm" action="descargarRegistrosCompras.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-12">
+                        <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Compras Separado)</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="date" id="formFile1" name="fecha" required>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="date" id="formFile2" name="fecha2" required>
+                            </div>
+                        </div>
+                        <div class="mb-6 d-flex justify-content-center">
+                            <input class="form-control" type="submit" value="Descargar Libro de Compras">
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+                <form id="dateForm" action="descargarRegistrosVentas.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-12">
+                        <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Ventas Separado)</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="date" id="formFile1" name="fecha" required>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="date" id="formFile2" name="fecha2" required>
+                            </div>
+                        </div>
+                        <div class="mb-6 d-flex justify-content-center">
+                            <input class="form-control" type="submit" value="Descargar Libro de Ventas">
+                        </div>
+                    </div>
+                </form>
             </section>
 
         </div>

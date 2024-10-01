@@ -90,7 +90,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Descargas</h1>
+                            <h1>Subir Archivos</h1>
                         </div>
                     
                     </div>
@@ -101,7 +101,7 @@
             <section class="content mb-12">
                 <form action="Importar.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir primero el de Compras y luego el de Ventas</label>
+                        <label for="formFile" class="form-label">Subir Archivos de Compras y Ventas Juntos (Subir primero el de Ventas y luego el de Compras) </label>
                         <div class="mb-6 row">
                             <div class="col">
                                 <input class="form-control" type="file" id="formFile1" name="archivo">
@@ -115,8 +115,38 @@
                         </div>
                     </div>
                 </form>
+                <br><br>
+                
+                <form action="ImportarCompras.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-12">
+                        <label for="formFile" class="form-label">Subir Archivos de Compras</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="file" id="formFileCompras" name="archivo">
+                            </div>
+                        </div>
+                        <div class="mb-6 d-flex justify-content-center">
+                            <input class="form-control" type="submit" value="Subir Archivos">
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+                
+                <form action="ImportarVentas.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-12">
+                        <label for="formFile" class="form-label">Subir Archivos de Ventas</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="file" id="formFileVentas" name="archivo2">
+                            </div>
+                        </div>
+                        <div class="mb-6 d-flex justify-content-center">
+                            <input class="form-control" type="submit" value="Subir Archivos">
+                        </div>
+                    </div>
+                </form>
+                
             </section>
-
         </div>
         <!-- /.content-wrapper -->
         <!-- Control Sidebar -->
