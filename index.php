@@ -43,7 +43,34 @@ $resultado2 = mysqli_query($mysqli, $sql2);
       <div class="sidebar">
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
+          <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Empresas
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="newempresa.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Crear empresa</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="empresas.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ver empresas existentes</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                        </li>
+          
+          <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
@@ -150,7 +177,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
 
                           ?>
                           <td> <a
-                              href="actualizar.php?id=<?php echo urlencode($row2['id']); ?>&fecha_emision=<?php echo urlencode($row2['fecha_emision']); ?>&serie=<?php echo urlencode($row2['serie']); ?>&numero_DTE=<?php echo urlencode($row2['numero_DTE']); ?>&id_receptor=<?php echo urlencode($row2['id_receptor']); ?>&nombre_completo_receptor=<?php echo urlencode($row2['nombre_completo_receptor']); ?>&monto_grantotal=<?php echo urlencode($row2['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row2['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row2['monto_IVA']); ?>">
+                              href="actualizarVentas.php?id=<?php echo urlencode($row2['id']); ?>&fecha_emision=<?php echo urlencode($row2['fecha_emision']); ?>&serie=<?php echo urlencode($row2['serie']); ?>&numero_DTE=<?php echo urlencode($row2['numero_DTE']); ?>&id_receptor=<?php echo urlencode($row2['id_receptor']); ?>&nombre_completo_receptor=<?php echo urlencode($row2['nombre_completo_receptor']); ?>&monto_grantotal=<?php echo urlencode($row2['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row2['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row2['monto_IVA']); ?>">
                               <i class="bi bi-pencil"></i>
                             </a>
                             <a href="deleteV.php?id=<?php echo $row2['id']; ?>"><i class="bi bi-trash"></i></button></a>

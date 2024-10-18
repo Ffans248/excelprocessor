@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,6 +37,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
@@ -64,7 +65,6 @@
                             
                         </li>
 
-
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
@@ -81,6 +81,7 @@
                                     </a>
                                 </li>
                             </ul>
+                            
                         </li>
 
                         <li class="nav-item menu-open">
@@ -127,52 +128,10 @@
 
             <!-- Main content -->
             <section class="content mb-4">
-                <!-- <form action="Importar.php" method="POST" enctype="multipart/form-data"> 
-                    <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir Archivos de Compras y Ventas Juntos (Subir primero el de Ventas y luego el de Compras) </label>
-                        <div class="mb-6 row">
-                            <div class="col">
-                                <input class="form-control" type="file" id="formFile" name="archivo">
-                            </div>
-                            <div class="col">
-                                <input class="form-control" type="file" id="formFile2" name="archivo2">
-                            </div>
-                        </div>
-                        <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
-                        </div>
-                    </div>
-                </form>-->
-                <br><br>
-        
-                <form action="ImportarCompras.php" method="POST" enctype="multipart/form-data">
-                    <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir Archivos de Compras</label>
-                        <div class="mb-6 row">
-                            <div class="col">
-                                <input class="form-control" type="file" id="formFileCompras" name="archivo">
-                            </div>
-                        </div>
-                        <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
-                        </div>
-                    </div>
-                </form>
-                <br><br>
-                
-                <form action="ImportarVentas.php" method="POST" enctype="multipart/form-data">
-                    <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir Archivos de Ventas</label>
-                        <div class="mb-6 row">
-                            <div class="col">
-                                <input class="form-control" type="file" id="formFileVentas" name="archivo2">
-                            </div>
-                        </div>
-                        <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
-                        </div>
-                    </div>
-                </form>
+            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
                 
             </section>
         </div>

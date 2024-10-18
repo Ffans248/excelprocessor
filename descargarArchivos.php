@@ -41,6 +41,33 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
+                                    Empresas
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="newempresa.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Crear empresa</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="empresas.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ver empresas existentes</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                        </li>
+
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
                                     Tablas
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
