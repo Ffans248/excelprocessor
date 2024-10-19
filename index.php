@@ -287,9 +287,10 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                           echo "<td>" . $row['monto_grantotal'] . "</td>";
                           echo "<td>" . $row['monto_sinIVA'] . "</td>";
                           echo "<td>" . $row['monto_IVA'] . "</td>";
+                          echo "<td>" . $row['fk_empresa'] . "</td>";
                           ?>
                           <td> <a
-                              href="actualizar.php?id=<?php echo urlencode($row['id']); ?>&fecha_emision=<?php echo urlencode($row['fecha_emision']); ?>&tipo_DTE=<?php echo urlencode($row['tipo_DTE']); ?>&serie=<?php echo urlencode($row['serie']); ?>&numero_DTE=<?php echo urlencode($row['numero_DTE']); ?>&NIT_emisor=<?php echo urlencode($row['NIT_emisor']); ?>&nombre_completo_emisor=<?php echo urlencode($row['nombre_completo_emisor']); ?>&codigo_establecimiento=<?php echo urlencode($row['codigo_establecimiento']); ?>&moneda=<?php echo urlencode($row['moneda']); ?>&monto_grantotal=<?php echo urlencode($row['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row['monto_IVA']); ?>">
+                              href="actualizar.php?id=<?php echo urlencode($row['id']); ?>&fecha_emision=<?php echo urlencode($row['fecha_emision']); ?>&tipo_DTE=<?php echo urlencode($row['tipo_DTE']); ?>&serie=<?php echo urlencode($row['serie']); ?>&numero_DTE=<?php echo urlencode($row['numero_DTE']); ?>&NIT_emisor=<?php echo urlencode($row['NIT_emisor']); ?>&nombre_completo_emisor=<?php echo urlencode($row['nombre_completo_emisor']); ?>&codigo_establecimiento=<?php echo urlencode($row['codigo_establecimiento']); ?>&moneda=<?php echo urlencode($row['moneda']); ?>&monto_grantotal=<?php echo urlencode($row['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row['monto_IVA'])?>&fk_empresa=<?php echo urlencode($row['fk_empresa']); ?>">
                               <i class="bi bi-pencil"></i>
                             </a>
                             <a href="deleteC.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash"></i></button></a>
