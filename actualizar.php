@@ -11,6 +11,7 @@ $moneda =$_GET['moneda'];
 $monto_grantotal =$_GET['monto_grantotal'];
 $monto_sinIVA =$_GET['monto_sinIVA'];
 $monto_IVA =$_GET['monto_IVA'];
+$fk_empresa =$_GET['fk_empresa'];
 
 echo "<pre>";
 print_r($_GET);
@@ -124,7 +125,7 @@ echo "</pre>";
         <div class="container-fluid">
           <div class="row">
            <div class="col-12">
-           <div class="mb-3 text-center"><h1>Editar estudiantes</h1></div> 
+           <div class="mb-3 text-center"><h1>Editar compra</h1></div> 
     <form action="update.php" method="POST">
         <div style="margin: 15px;">
             <div class="mb-3">
@@ -181,7 +182,10 @@ echo "</pre>";
                 <label for="Correo" class="form-label">Monto con IVA:</label>
                 <input type="number" class="form-control" name="MIVA" placeholder="Telefono" required value="<?php echo $monto_IVA;?>">
             </div>
-
+            <div class="mb-3">
+                <label for="Correo" class="form-label">Id de empresa:</label>
+                <input disabled type="number" class="form-control" name="fk_empresa" placeholder="Telefono" required value="<?php echo $fk_empresa;?>">
+            </div>
             <div class="d-grid mb-3">
                 <button class="btn btn-success" type="submit">Registrar</button>
             </div>
