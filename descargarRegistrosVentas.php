@@ -11,6 +11,8 @@ use PhpOffice\PhpSpreadsheet\Cell\DataType;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $fecha = $_POST['fecha'];
 $fecha2 = $_POST['fecha2'];
+$empresaId = $_POST['empresaCompras'];
+
 
 $fecha = date('Y-m-d', strtotime($fecha));
 $fecha2 = date('Y-m-d', strtotime($fecha2));
@@ -18,7 +20,7 @@ $fecha2 = date('Y-m-d', strtotime($fecha2));
 
 $accountingFormat = '_("Q"* #,##0.00_);_("Q"* \(#,##0.00\);_("Q"* "-"??_);_(@_)';
 
-$sql2 = "SELECT fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA FROM ventas WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2'";
+$sql2 = "SELECT fk_empresa, fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA FROM ventas WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2' AND fk_empresa = '$empresaId'";
 $resultado2 = $mysqli->query($sql2);
 
 $excel = new Spreadsheet();
@@ -28,7 +30,7 @@ $hojaActiva->setTitle('LibroVentas');
 
 $fila = 1;
 
-$sql2 = "SELECT fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA FROM ventas WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2'";
+$sql2 = "SELECT fk_empresa, fecha_emision, serie, numero_DTE, id_receptor, nombre_completo_receptor, monto_grantotal, monto_sinIVA, monto_IVA FROM ventas WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2' AND fk_empresa = '$empresaId'";
 $resultado2 = $mysqli->query($sql2);
 
 

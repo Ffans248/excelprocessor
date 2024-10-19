@@ -128,6 +128,39 @@
             <section class="content mb-12">
                 <form id="dateForm" action="descargarRegistros.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
+                    <label for="empresaCompras" class="form-label">Seleccionar Empresa para Compras y Ventas</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <select class="form-select" name="empresaCompras" id="empresaCompras" required>
+                                    <option value="">--Selecciona una empresa--</option>
+                                    <?php
+                                    require 'conexion.php';
+
+                                    // Obtener todas las empresas para el filtro
+                                    $sql_empresas = "SELECT id, nombre FROM empresa";
+                                    $resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+                                    // Verificar si se ha seleccionado una empresa
+                                    $filtro_empresa = '';
+                                    if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+                                        $filtro_empresa = $_GET['empresa'];
+                                        $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+                                        $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+                                    } else {
+                                        // Si no hay filtro, mostrar todos los registros
+                                        $sql = "SELECT * FROM compras";
+                                        $sql2 = "SELECT * FROM ventas";
+                                    }
+
+                                    if ($resultado_empresas) {
+                                        while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                                            echo "<option value='" . $empresa['id'] . "'>" . $empresa['nombre'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                         <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Compras y Ventas Juntos)</label>
                         <div class="mb-6 row">
                             <div class="col">
@@ -145,6 +178,40 @@
                 <br><br>
                 <form id="dateForm" action="descargarRegistrosCompras.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
+
+                    <label for="empresaCompras" class="form-label">Seleccionar Empresa para Compras y Ventas</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <select class="form-select" name="empresaCompras" id="empresaCompras" required>
+                                    <option value="">--Selecciona una empresa--</option>
+                                    <?php
+                                    require 'conexion.php';
+
+                                    // Obtener todas las empresas para el filtro
+                                    $sql_empresas = "SELECT id, nombre FROM empresa";
+                                    $resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+                                    // Verificar si se ha seleccionado una empresa
+                                    $filtro_empresa = '';
+                                    if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+                                        $filtro_empresa = $_GET['empresa'];
+                                        $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+                                        $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+                                    } else {
+                                        // Si no hay filtro, mostrar todos los registros
+                                        $sql = "SELECT * FROM compras";
+                                        $sql2 = "SELECT * FROM ventas";
+                                    }
+
+                                    if ($resultado_empresas) {
+                                        while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                                            echo "<option value='" . $empresa['id'] . "'>" . $empresa['nombre'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                         <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Compras Separado)</label>
                         <div class="mb-6 row">
                             <div class="col">
@@ -162,6 +229,39 @@
                 <br><br>
                 <form id="dateForm" action="descargarRegistrosVentas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
+                    <label for="empresaCompras" class="form-label">Seleccionar Empresa para Compras y Ventas</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <select class="form-select" name="empresaCompras" id="empresaCompras" required>
+                                    <option value="">--Selecciona una empresa--</option>
+                                    <?php
+                                    require 'conexion.php';
+
+                                    // Obtener todas las empresas para el filtro
+                                    $sql_empresas = "SELECT id, nombre FROM empresa";
+                                    $resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+                                    // Verificar si se ha seleccionado una empresa
+                                    $filtro_empresa = '';
+                                    if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+                                        $filtro_empresa = $_GET['empresa'];
+                                        $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+                                        $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+                                    } else {
+                                        // Si no hay filtro, mostrar todos los registros
+                                        $sql = "SELECT * FROM compras";
+                                        $sql2 = "SELECT * FROM ventas";
+                                    }
+
+                                    if ($resultado_empresas) {
+                                        while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                                            echo "<option value='" . $empresa['id'] . "'>" . $empresa['nombre'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                         <label for="formFile1" class="form-label">Seleccionar fecha inicio y fecha final (Ventas Separado)</label>
                         <div class="mb-6 row">
                             <div class="col">
