@@ -8,7 +8,8 @@ $NregistrosC = 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica si se ha subido el archivo de Compras
-    if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
+    if (isset($_POST['empresaCompras']) && !empty($_POST['empresaCompras']) && isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
+        $empresaId = $_POST['empresaCompras']; // Capturar el ID de la empresa seleccionada
         $nombreArchivo = $_FILES['archivo']['name'];  // Nombre del archivo
         $rutaTemporal = $_FILES['archivo']['tmp_name']; // Ruta temporal del archivo en el servidor
 
@@ -33,21 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Col10 = $hoja->getCell('J' . $ifilas)->getCalculatedValue();
             $Col11 = $hoja->getCell('K' . $ifilas)->getCalculatedValue();
 
-            insertCompras($mysqli, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11);
+            insertCompras($mysqli, $empresaId, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11);
             $NregistrosC++;
         }
     }
     $mysqli->close();
-    header( 'Location: archivos.html');
+    header( 'Location: archivos.php');
 
 }else {
     echo "Hubo un problema al subir los archivos.";
 }
 
-function insertCompras($mysqli, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11)
+function insertCompras($mysqli, $empresaId, $Col1, $Col2, $Col3, $Col4, $Col5, $Col6, $Col7, $Col8, $Col9, $Col10, $Col11)
 {
-    $sql = "INSERT INTO compras (fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, moneda, monto_grantotal, monto_sinIVA, monto_IVA) 
-            VALUES ('$Col1', '$Col2', '$Col3', '$Col4', '$Col5', '$Col6', '$Col7', '$Col8', '$Col9', '$Col10', '$Col11')";
+    $sql = "INSERT INTO compras (fk_empresa, fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, moneda, monto_grantotal, monto_sinIVA, monto_IVA) 
+            VALUES ('$empresaId', '$Col1', '$Col2', '$Col3', '$Col4', '$Col5', '$Col6', '$Col7', '$Col8', '$Col9', '$Col10', '$Col11')";
     if ($mysqli->query($sql)) {
     } else {
         echo "Error al insertar compra: " . $mysqli->error;

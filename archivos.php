@@ -61,7 +61,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+
                         </li>
 
 
@@ -120,7 +120,7 @@
                         <div class="col-sm-6">
                             <h1>Subir Archivos</h1>
                         </div>
-                    
+
                     </div>
                 </div>
             </section>
@@ -143,37 +143,107 @@
                         </div>
                     </div>
                 </form>-->
-                <br><br>
-        
+
+
                 <form action="ImportarCompras.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir Archivos de Compras</label>
+                        <label for="empresaCompras" class="form-label">Seleccionar Empresa para Compras</label>
                         <div class="mb-6 row">
                             <div class="col">
-                                <input class="form-control" type="file" id="formFileCompras" name="archivo">
+                                <select class="form-select" name="empresaCompras" id="empresaCompras" required>
+                                    <option value="">--Selecciona una empresa--</option>
+                                    <?php
+
+                                    require 'conexion.php';
+
+                                    // Obtener todas las empresas para el filtro
+                                    $sql_empresas = "SELECT id, nombre FROM empresa";
+                                    $resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+                                    // Verificar si se ha seleccionado una empresa
+                                    $filtro_empresa = '';
+                                    if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+                                        $filtro_empresa = $_GET['empresa'];
+                                        $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+                                        $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+                                    } else {
+                                        // Si no hay filtro, mostrar todos los registros
+                                        $sql = "SELECT * FROM compras";
+                                        $sql2 = "SELECT * FROM ventas";
+                                    }
+
+                                    if ($resultado_empresas) {
+                                        while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                                            echo "<option value='" . $empresa['id'] . "'>" . $empresa['nombre'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label for="formFileCompras" class="form-label">Subir Archivos de Compras</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="file" id="formFileCompras" name="archivo" required>
                             </div>
                         </div>
                         <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
+                            <input class="form-control" type="submit" value="Subir Archivos de Compras">
                         </div>
                     </div>
                 </form>
                 <br><br>
-                
+
                 <form action="ImportarVentas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-12">
-                        <label for="formFile" class="form-label">Subir Archivos de Ventas</label>
+                        <label for="empresaVentas" class="form-label">Seleccionar Empresa para Ventas</label>
                         <div class="mb-6 row">
                             <div class="col">
-                                <input class="form-control" type="file" id="formFileVentas" name="archivo2">
+                                <select class="form-select" name="empresaVentas" id="empresaVentas" required>
+                                    <option value="">--Selecciona una empresa--</option>
+                                    <?php
+
+                                    require 'conexion.php';
+
+                                    // Obtener todas las empresas para el filtro
+                                    $sql_empresas = "SELECT id, nombre FROM empresa";
+                                    $resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+                                    // Verificar si se ha seleccionado una empresa
+                                    $filtro_empresa = '';
+                                    if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+                                        $filtro_empresa = $_GET['empresa'];
+                                        $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+                                        $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+                                    } else {
+                                        // Si no hay filtro, mostrar todos los registros
+                                        $sql = "SELECT * FROM compras";
+                                        $sql2 = "SELECT * FROM ventas";
+                                    }
+
+                                    if ($resultado_empresas) {
+                                        while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                                            echo "<option value='" . $empresa['id'] . "'>" . $empresa['nombre'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label for="formFileVentas" class="form-label">Subir Archivos de Ventas</label>
+                        <div class="mb-6 row">
+                            <div class="col">
+                                <input class="form-control" type="file" id="formFileVentas" name="archivo2" required>
                             </div>
                         </div>
                         <div class="mb-6 d-flex justify-content-center">
-                            <input class="form-control" type="submit" value="Subir Archivos">
+                            <input class="form-control" type="submit" value="Subir Archivos de Ventas">
                         </div>
                     </div>
                 </form>
-                
+
             </section>
         </div>
         <!-- /.content-wrapper -->
