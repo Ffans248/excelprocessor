@@ -62,7 +62,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+
                         </li>
 
                         <li class="nav-item menu-open">
@@ -81,7 +81,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            
+
                         </li>
 
                         <li class="nav-item menu-open">
@@ -94,7 +94,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="archivos.html" class="nav-link active">
+                                    <a href="archivos.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Subir Archivos</p>
                                     </a>
@@ -121,18 +121,35 @@
                         <div class="col-sm-6">
                             <h1>Subir Archivos</h1>
                         </div>
-                    
+
                     </div>
                 </div>
             </section>
 
             <!-- Main content -->
             <section class="content mb-4">
-            <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
-                
+                <form action="crearEmpresa.php" method="POST">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre Empresa">
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero" class="form-label">Número</label>
+                        <input type="number" class="form-control" name="numero" placeholder="Número de Empresa">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descrip" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name="descrip" placeholder="Descripción de Empresa">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="mb-6 d-flex justify-content-center">
+                        <input class="form-control" type="submit" value="Registrar">
+                    </div>
+                </form>
             </section>
         </div>
         <!-- /.content-wrapper -->

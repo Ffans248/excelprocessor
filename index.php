@@ -1,10 +1,26 @@
 <?php
 require 'conexion.php';
-$sql = "SELECT * FROM compras";
+
+// Obtener todas las empresas para el filtro
+$sql_empresas = "SELECT id, nombre FROM empresa";
+$resultado_empresas = mysqli_query($mysqli, $sql_empresas);
+
+// Verificar si se ha seleccionado una empresa
+$filtro_empresa = '';
+if (isset($_GET['empresa']) && $_GET['empresa'] != '') {
+  $filtro_empresa = $_GET['empresa'];
+  $sql = "SELECT * FROM compras WHERE fk_empresa = '$filtro_empresa'";
+  $sql2 = "SELECT * FROM ventas WHERE fk_empresa = '$filtro_empresa'";
+} else {
+  // Si no hay filtro, mostrar todos los registros
+  $sql = "SELECT * FROM compras";
+  $sql2 = "SELECT * FROM ventas";
+}
+
 $resultado = mysqli_query($mysqli, $sql);
-$sql2 = "SELECT * FROM ventas ";
 $resultado2 = mysqli_query($mysqli, $sql2);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,34 +59,34 @@ $resultado2 = mysqli_query($mysqli, $sql2);
       <div class="sidebar">
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Empresas
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="newempresa.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear empresa</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="empresas.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ver empresas existentes</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            
-                        </li>
-          
-          <li class="nav-item menu-open">
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Empresas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="newempresa.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear empresa</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="empresas.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ver empresas existentes</p>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
+            <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
@@ -98,7 +114,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="archivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Subir Archivos</p>
                   </a>
@@ -129,6 +145,28 @@ $resultado2 = mysqli_query($mysqli, $sql2);
         </div>
       </section>
 
+
+      <form method="GET" action="" class="mb-3">
+        <div class="m-3">
+          <label for="empresa" class="form-label">Filtrar por empresa:</label>
+          <select class="form-select" name="empresa" id="floatingSelect" aria-label="Floating label select example">
+            <option value="">--Selecciona una empresa--</option>
+            <?php
+            if ($resultado_empresas) {
+              while ($empresa = mysqli_fetch_assoc($resultado_empresas)) {
+                // Mantener seleccionada la empresa filtrada
+                $selected = ($empresa['id'] == $filtro_empresa) ? 'selected' : '';
+                echo "<option value='" . $empresa['id'] . "' $selected>" . $empresa['nombre'] . "</option>";
+              }
+            }
+            ?>
+          </select>
+            <button type="submit" class="btn btn-secondary btn-sm">Filtrar</button>
+          
+        </div>
+      </form>
+
+
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
@@ -138,18 +176,19 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                 <div class="card-header">
                   <h3 class="card-title">Tablas de Datos con Exportaciones</h3>
                 </div>
+
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th>ID</th>
+                        <th>ID</th>
                         <th>Fecha de Emisión</th>
 
                         <th>Serie</th>
                         <th>Número de DTE</th>
                         <th>ID de Receptor</th>
-                        <th>Nombre completo del receptor</th> 
+                        <th>Nombre completo del receptor</th>
                         <th>Monto Gran Total</th>
                         <th>Monto sin IVA</th>
                         <th>Monto IVA</th>
@@ -196,7 +235,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                       <!-- Add more rows as needed -->
                     </tbody>
                     <tfoot>
-                      
+
                     </tfoot>
 
                   </table>
