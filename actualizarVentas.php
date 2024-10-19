@@ -10,6 +10,7 @@ $nombre_completo_emisor =$_GET['nombre_completo_receptor'];
 $monto_grantotal =$_GET['monto_grantotal'];
 $monto_sinIVA =$_GET['monto_sinIVA'];
 $monto_IVA =$_GET['monto_IVA'];
+$fk_empresa =$_GET['fk_empresa'];
 
 echo "<pre>";
 print_r($_GET);
@@ -57,13 +58,40 @@ echo "</pre>";
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
+                  Empresas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="newempresa.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear empresa</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="empresas.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ver empresas existentes</p>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
                   Tablas
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="index.html" class="nav-link active">
+                  <a href="index.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tablas</p>
                   </a>
@@ -81,13 +109,13 @@ echo "</pre>";
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="archivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Subir Archivos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="descargarArchivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descargar Archivos</p>
                   </a>
@@ -149,7 +177,10 @@ echo "</pre>";
                 <label for="SApellido" class="form-label">ID receptor:</label>
                 <input type="text" class="form-control" name="idRecep" placeholder="ID receptor" required value="<?php echo $id_receptor;?>">
             </div>
-
+            <div class="mb-3">
+                <label for="SApellido" class="form-label">ID receptor:</label>
+                <input type="text" class="form-control" name="nomRecep" placeholder="ID receptor" required value="<?php echo $nombre_completo_emisor;?>">
+            </div>
 
            
             <div class="mb-3">
@@ -167,6 +198,10 @@ echo "</pre>";
                 <input type="number" class="form-control" name="MIVA" placeholder="Monto IVA" required value="<?php echo $monto_IVA;?>">
             </div>
 
+            <div class="mb-3">
+                <label for="Correo" class="form-label">ID empresa</label>
+                <input disabled type="number" class="form-control" name="fk_empresa" placeholder="ID" required value="<?php echo $fk_empresa;?>">
+            </div>
             <div class="d-grid mb-3">
                 <button class="btn btn-success" type="submit">Registrar</button>
             </div>

@@ -192,6 +192,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                         <th>Monto Gran Total</th>
                         <th>Monto sin IVA</th>
                         <th>Monto IVA</th>
+                        <th>ID de empresa</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -213,10 +214,11 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                           echo "<td>" . $row2['monto_grantotal'] . "</td>";
                           echo "<td>" . $row2['monto_sinIVA'] . "</td>";
                           echo "<td>" . $row2['monto_IVA'] . "</td>";
+                          echo "<td>" . $row2['fk_empresa'] . "</td>";
 
                           ?>
                           <td> <a
-                              href="actualizarVentas.php?id=<?php echo urlencode($row2['id']); ?>&fecha_emision=<?php echo urlencode($row2['fecha_emision']); ?>&serie=<?php echo urlencode($row2['serie']); ?>&numero_DTE=<?php echo urlencode($row2['numero_DTE']); ?>&id_receptor=<?php echo urlencode($row2['id_receptor']); ?>&nombre_completo_receptor=<?php echo urlencode($row2['nombre_completo_receptor']); ?>&monto_grantotal=<?php echo urlencode($row2['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row2['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row2['monto_IVA']); ?>">
+                              href="actualizarVentas.php?id=<?php echo urlencode($row2['id']); ?>&fecha_emision=<?php echo urlencode($row2['fecha_emision']); ?>&serie=<?php echo urlencode($row2['serie']); ?>&numero_DTE=<?php echo urlencode($row2['numero_DTE']); ?>&id_receptor=<?php echo urlencode($row2['id_receptor']); ?>&nombre_completo_receptor=<?php echo urlencode($row2['nombre_completo_receptor']); ?>&monto_grantotal=<?php echo urlencode($row2['monto_grantotal']); ?>&monto_sinIVA=<?php echo urlencode($row2['monto_sinIVA']); ?>&monto_IVA=<?php echo urlencode($row2['monto_IVA']);?>&fk_empresa=<?php echo urlencode($row2['fk_empresa']); ?>">
                               <i class="bi bi-pencil"></i>
                             </a>
                             <a href="deleteV.php?id=<?php echo $row2['id']; ?>"><i class="bi bi-trash"></i></button></a>
@@ -264,6 +266,7 @@ $resultado2 = mysqli_query($mysqli, $sql2);
                         <th>Monto Gran Total</th>
                         <th>Monto sin IVA</th>
                         <th>Monto IVA</th>
+                        <th>ID de empresa</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>

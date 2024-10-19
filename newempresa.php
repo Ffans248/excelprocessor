@@ -34,82 +34,79 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Empresas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="newempresa.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear empresa</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="empresas.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ver empresas existentes</p>
+                  </a>
+                </li>
+              </ul>
 
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Empresas
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="newempresa.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear empresa</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="empresas.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ver empresas existentes</p>
-                                    </a>
-                                </li>
-                            </ul>
+            </li>
 
-                        </li>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Tablas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="index.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tablas</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Tablas
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="index.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tablas</p>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </li>
-
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Archivos
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="archivos.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Subir Archivos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="descargarArchivos.php" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Descargar Archivos</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Archivos
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="archivos.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Subir Archivos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="descargarArchivos.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Descargar Archivos</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
             <!-- /.sidebar -->
         </aside>
 
@@ -121,35 +118,18 @@
                         <div class="col-sm-6">
                             <h1>Subir Archivos</h1>
                         </div>
-
+                    
                     </div>
                 </div>
             </section>
 
             <!-- Main content -->
             <section class="content mb-4">
-                <form action="crearEmpresa.php" method="POST">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre Empresa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="numero" class="form-label">Número</label>
-                        <input type="number" class="form-control" name="numero" placeholder="Número de Empresa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descrip" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" name="descrip" placeholder="Descripción de Empresa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email"
-                            placeholder="name@example.com">
-                    </div>
-                    <div class="mb-6 d-flex justify-content-center">
-                        <input class="form-control" type="submit" value="Registrar">
-                    </div>
-                </form>
+            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Nombre de la empresa</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+                
             </section>
         </div>
         <!-- /.content-wrapper -->
