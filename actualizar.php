@@ -59,13 +59,40 @@ echo "</pre>";
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
+                  Empresas
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="newempresa.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear empresa</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="empresas.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ver empresas existentes</p>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
                   Tablas
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="index.html" class="nav-link active">
+                  <a href="index.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tablas</p>
                   </a>
@@ -83,13 +110,13 @@ echo "</pre>";
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="archivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Subir Archivos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="archivos.html" class="nav-link active">
+                  <a href="descargarArchivos.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descargar Archivos</p>
                   </a>
