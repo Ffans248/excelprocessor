@@ -48,4 +48,7 @@ if ($stmt->execute()) {
 // Cerrar la declaración y la conexión
 $stmt->close();
 $conexion->close(); 
+
+header("Location: index.php");
+exit();
 ?>

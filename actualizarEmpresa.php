@@ -1,20 +1,11 @@
 <?php
 $id =$_GET['id'];
-$fecha_emision =$_GET['fecha_emision'];
-$serie =$_GET['serie'];
-$numero_DTE =$_GET['numero_DTE'];
-$id_receptor =$_GET['id_receptor'];
+$nombre =$_GET['nombre'];
+$telefono =$_GET['telefono'];
+$descripcion =$_GET['descripcion'];
+$email =$_GET['email'];
 
-$nombre_completo_emisor =$_GET['nombre_completo_receptor'];
 
-$monto_grantotal =$_GET['monto_grantotal'];
-$monto_sinIVA =$_GET['monto_sinIVA'];
-$monto_IVA =$_GET['monto_IVA'];
-$fk_empresa =$_GET['fk_empresa'];
-
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,7 +143,7 @@ echo "</pre>";
           <div class="row">
            <div class="col-12">
            <div class="mb-3 text-center"><h1>Editar estudiantes</h1></div> 
-    <form action="updateVentas.php" method="POST">
+    <form action="updateEmpresa.php" method="POST">
         <div style="margin: 15px;">
             <div class="mb-3">
                 <label for="Clave" class="form-label">ID</label>
@@ -160,51 +151,28 @@ echo "</pre>";
                     readonly>
             </div>
             <div class="mb-3">
-                <label for="PNombre" class="form-label">Fecha de emision:</label>
-                <input type="text" class="form-control" name="femision" placeholder="Fecha de emisión" value="<?php echo $fecha_emision;?>" required>
+                <label for="PNombre" class="form-label">Nombre de la empresa:</label>
+                <input type="text" class="form-control" name="nombre" placeholder="Fecha de emisión" value="<?php echo $nombre;?>" required>
             </div>
            
             <div class="mb-3">
-                <label for="TNombre" class="form-label">Serie:</label>
-                <input type="text" class="form-control" name="nserie" placeholder="Serie" value="<?php echo $serie;?>">
+                <label for="TNombre" class="form-label">Telefono:</label>
+                <input type="text" class="form-control" name="telefono" placeholder="Telefono" value="<?php echo $telefono;?>">
             </div>
 
             <div class="mb-3">
-                <label for="PApellido" class="form-label">Número de DTE:</label>
-                <input type="text" class="form-control" name="nDTE" placeholder="DTE" required value="<?php echo $numero_DTE;?>">
+                <label for="PApellido" class="form-label">Descripción:</label>
+                <input type="text" class="form-control" name="descripcion" placeholder="Descripción de la empresa" required value="<?php echo $descripcion;?>">
             </div>
             <div class="mb-3">
-                <label for="SApellido" class="form-label">ID receptor:</label>
-                <input type="text" class="form-control" name="idRecep" placeholder="ID receptor" required value="<?php echo $id_receptor;?>">
-            </div>
-            <div class="mb-3">
-                <label for="SApellido" class="form-label">ID receptor:</label>
-                <input type="text" class="form-control" name="nomRecep" placeholder="ID receptor" required value="<?php echo $nombre_completo_emisor;?>">
+                <label for="SApellido" class="form-label">Correo</label>
+                <input type="text" class="form-control" name="email" placeholder="Correo de la empresa" required value="<?php echo $email;?>">
             </div>
 
-           
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto Gran Total:</label>
-                <input type="number" class="form-control" name="MGTotal" placeholder="Monto Gran Total" required value="<?php echo $monto_grantotal;?>">
-            </div>
-            
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto sin IVA:</label>
-                <input type="number" class="form-control" name="MsinIVA" placeholder="Monto sin IVA" required value="<?php echo $monto_sinIVA;?>">
-            </div>
-
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto con IVA:</label>
-                <input type="number" class="form-control" name="MIVA" placeholder="Monto IVA" required value="<?php echo $monto_IVA;?>">
-            </div>
-
-            <div class="mb-3">
-                <label for="Correo" class="form-label">ID empresa</label>
-                <input disabled type="number" class="form-control" name="fk_empresa" placeholder="ID" required value="<?php echo $fk_empresa;?>">
-            </div>
             <div class="d-grid mb-3">
                 <button class="btn btn-success" type="submit">Registrar</button>
             </div>
+            
         </div>
     </form>
            </div>
@@ -265,4 +233,4 @@ echo "</pre>";
   </script>
 </body>
 
-</html>
+</html> 

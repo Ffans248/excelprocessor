@@ -13,9 +13,7 @@ $monto_sinIVA =$_GET['monto_sinIVA'];
 $monto_IVA =$_GET['monto_IVA'];
 $fk_empresa =$_GET['fk_empresa'];
 
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+
  ?>
 <!DOCTYPE html>
 <html lang="en">

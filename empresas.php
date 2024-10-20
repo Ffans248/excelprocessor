@@ -1,21 +1,7 @@
-<?php
-$id =$_GET['id'];
-$fecha_emision =$_GET['fecha_emision'];
-$serie =$_GET['serie'];
-$numero_DTE =$_GET['numero_DTE'];
-$id_receptor =$_GET['id_receptor'];
-
-$nombre_completo_emisor =$_GET['nombre_completo_receptor'];
-
-$monto_grantotal =$_GET['monto_grantotal'];
-$monto_sinIVA =$_GET['monto_sinIVA'];
-$monto_IVA =$_GET['monto_IVA'];
-$fk_empresa =$_GET['fk_empresa'];
-
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
- ?>
+<?php require 'conexion.php';
+$sql = "SELECT * FROM empresa";
+$resultado = mysqli_query($mysqli, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +30,7 @@ echo "</pre>";
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index.html" class="brand-link">
+      <a href="index.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">EXCELPROCESSOR</span>
@@ -136,78 +122,85 @@ echo "</pre>";
             <div class="col-sm-6">
               <h1>Tablas</h1>
             </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Tablas</li>
-              </ol>
-            </div>
           </div>
         </div>
       </section>
+
+
+      
+
 
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-           <div class="col-12">
-           <div class="mb-3 text-center"><h1>Editar estudiantes</h1></div> 
-    <form action="updateVentas.php" method="POST">
-        <div style="margin: 15px;">
-            <div class="mb-3">
-                <label for="Clave" class="form-label">ID</label>
-                <input type="text" class="form-control" name="clave" placeholder="ID" value="<?php echo $id;?>"
-                    readonly>
-            </div>
-            <div class="mb-3">
-                <label for="PNombre" class="form-label">Fecha de emision:</label>
-                <input type="text" class="form-control" name="femision" placeholder="Fecha de emisión" value="<?php echo $fecha_emision;?>" required>
-            </div>
-           
-            <div class="mb-3">
-                <label for="TNombre" class="form-label">Serie:</label>
-                <input type="text" class="form-control" name="nserie" placeholder="Serie" value="<?php echo $serie;?>">
-            </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Listado de empresas</h3>
+                </div>
 
-            <div class="mb-3">
-                <label for="PApellido" class="form-label">Número de DTE:</label>
-                <input type="text" class="form-control" name="nDTE" placeholder="DTE" required value="<?php echo $numero_DTE;?>">
-            </div>
-            <div class="mb-3">
-                <label for="SApellido" class="form-label">ID receptor:</label>
-                <input type="text" class="form-control" name="idRecep" placeholder="ID receptor" required value="<?php echo $id_receptor;?>">
-            </div>
-            <div class="mb-3">
-                <label for="SApellido" class="form-label">ID receptor:</label>
-                <input type="text" class="form-control" name="nomRecep" placeholder="ID receptor" required value="<?php echo $nombre_completo_emisor;?>">
-            </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Descripción</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
 
-           
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto Gran Total:</label>
-                <input type="number" class="form-control" name="MGTotal" placeholder="Monto Gran Total" required value="<?php echo $monto_grantotal;?>">
-            </div>
-            
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto sin IVA:</label>
-                <input type="number" class="form-control" name="MsinIVA" placeholder="Monto sin IVA" required value="<?php echo $monto_sinIVA;?>">
-            </div>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-            <div class="mb-3">
-                <label for="Correo" class="form-label">Monto con IVA:</label>
-                <input type="number" class="form-control" name="MIVA" placeholder="Monto IVA" required value="<?php echo $monto_IVA;?>">
-            </div>
+                      <?php
 
-            <div class="mb-3">
-                <label for="Correo" class="form-label">ID empresa</label>
-                <input disabled type="number" class="form-control" name="fk_empresa" placeholder="ID" required value="<?php echo $fk_empresa;?>">
+
+
+                      if ($resultado) {
+                        while ($row2 = $resultado->fetch_array()) {
+                          echo "<tr>";
+                          echo "<td>" . $row2['id'] . "</td>";
+                          echo "<td>" . $row2['nombre'] . "</td>";
+                          echo "<td>" . $row2['telefono'] . "</td>";
+                          echo "<td>" . $row2['descripcion'] . "</td>";
+                          echo "<td>" . $row2['email'] . "</td>";
+                         
+
+                          ?>
+                          <td> <a
+                              href="actualizarEmpresa.php?id=<?php echo urlencode($row2['id']); ?>&nombre=<?php echo urlencode($row2['nombre']); ?>&telefono=<?php echo urlencode($row2['telefono']); ?>&descripcion=<?php echo urlencode($row2['descripcion']); ?>&email=<?php echo urlencode($row2['email']); ?>">
+                              <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="deleteE.php?id=<?php echo $row2['id']; ?>"><i class="bi bi-trash"></i></button></a>
+
+
+                          </td>
+                          <?php
+                          echo "</tr>";
+                          //include("aqdmindelete.php");
+                        }
+                      }
+
+
+                      ?>
+
+                      <!-- Add more rows as needed -->
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+             
             </div>
-            <div class="d-grid mb-3">
-                <button class="btn btn-success" type="submit">Registrar</button>
-            </div>
-        </div>
-    </form>
-           </div>
           </div>
         </div>
       </section>
