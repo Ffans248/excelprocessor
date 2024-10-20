@@ -105,6 +105,24 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Soporte
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="soporte.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contacto</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -117,7 +135,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Subir Archivos</h1>
+                            <h1>Descargar Archivos</h1>
                         </div>
                         
                     </div>

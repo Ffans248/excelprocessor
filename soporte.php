@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -37,7 +37,6 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
@@ -81,7 +80,6 @@
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
 
                         <li class="nav-item menu-open">
@@ -137,37 +135,36 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Crear Empresas</h1>
+                            <h1>Contáctenos</h1>
                         </div>
-
                     </div>
                 </div>
             </section>
 
             <!-- Main content -->
-            <section class="content mb-4">
-                <form action="crearEmpresa.php" method="POST">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre Empresa">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">Información de Contacto</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Correo Electrónico</h5>
+                                    <p class="card-text">Para consultas y soporte técnico, envíenos un correo a:</p>
+                                    <p class="card-text"><strong>ramescdev@gmail.com</strong></p>
+
+                                    <h5 class="card-title">Número Teléfonico</h5>
+                                    <p class="card-text"><strong>+502 5561 8204</strong></p>
+
+                                    <p class="card-text"><i class="fas fa-map-marker-alt"></i> Guatemala</p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <div class="mb-3">
-                        <label for="numero" class="form-label">Número</label>
-                        <input type="number" class="form-control" name="numero" placeholder="Número de Empresa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descrip" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" name="descrip" placeholder="Descripción de Empresa">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email"
-                            placeholder="name@example.com">
-                    </div>
-                    <div class="mb-6 d-flex justify-content-center">
-                        <input class="form-control" type="submit" value="Registrar">
-                    </div>
-                </form>
+                </div>
             </section>
         </div>
         <!-- /.content-wrapper -->
@@ -199,6 +196,28 @@
 
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Inicializa DataTables después de que los datos estén en la tabla
+            $('#example2').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+        });
+    </script>
 </body>
 
 </html>
