@@ -11,6 +11,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DataType;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $fecha = $_POST['fecha'];
 $fecha2 = $_POST['fecha2'];
+$empresaId = $_POST['empresaCompras'];
 
 $fecha = date('Y-m-d', strtotime($fecha));
 $fecha2 = date('Y-m-d', strtotime($fecha2));
@@ -18,7 +19,7 @@ $fecha2 = date('Y-m-d', strtotime($fecha2));
 
 $accountingFormat = '_("Q"* #,##0.00_);_("Q"* \(#,##0.00\);_("Q"* "-"??_);_(@_)';
 
-$sql = "SELECT fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, monto_grantotal, monto_sinIVA, monto_IVA FROM compras WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2'";
+$sql = "SELECT fk_empresa, fecha_emision, tipo_DTE, serie, numero_DTE, NIT_emisor, nombre_completo_emisor, codigo_establecimiento, monto_grantotal, monto_sinIVA, monto_IVA FROM compras WHERE fecha_emision BETWEEN '$fecha' AND '$fecha2' AND fk_empresa = '$empresaId'";
 $resultado = $mysqli->query($sql);
 
 $excel = new Spreadsheet();
